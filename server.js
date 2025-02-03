@@ -21,6 +21,7 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
 // Routes
+
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/expenses', require('./routes/expenses'));
 app.use('/api/users', require('./routes/users'));
@@ -28,6 +29,9 @@ app.use('/api/departments', require('./routes/departments')); // Add departments
 app.use('/api/projects', require('./routes/projects')); // Add projects route
 app.use('/api/transport-modes', require('./routes/transportModes')); // Add transport modes route
 
+app.get("/", (req, res) => {
+  res.json({ message: "API is working!" });
+});
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err);
